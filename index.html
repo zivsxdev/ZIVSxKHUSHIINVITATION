@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khushi Bano & Mohsin Khan — Wedding Invitation</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f8f5ef;--cream-dark:#ede8df;
+  --gold:#b8975a;--gold-light:#d4b483;--gold-pale:#e8d9b5;
+  --black:#111;--dark:#1a1a1a;--mid:#4a4a4a;--light:#7a7a7a;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--black);font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden}
+
+/* ── MODERN SCROLL ANIMATIONS ── */
+/* Base hidden state */
+[data-anim]{opacity:0;transition-property:opacity,transform,filter;transition-timing-function:cubic-bezier(.22,.8,.32,1);transition-duration:.85s;will-change:opacity,transform}
+
+/* Animation variants */
+[data-anim="fade-up"]        {transform:translateY(48px)}
+[data-anim="fade-down"]      {transform:translateY(-32px)}
+[data-anim="fade-left"]      {transform:translateX(48px)}
+[data-anim="fade-right"]     {transform:translateX(-48px)}
+[data-anim="scale-up"]       {transform:scale(.88);filter:blur(4px)}
+[data-anim="scale-in"]       {transform:scale(1.08);filter:blur(3px)}
+[data-anim="flip-up"]        {transform:perspective(600px) rotateX(18deg) translateY(32px)}
+[data-anim="reveal-word"]    {transform:translateY(60px);clip-path:inset(0 0 100% 0)}
+[data-anim="line-in"]        {transform:scaleX(0);transform-origin:left center}
+
+/* Visible state — all resolve to identity */
+[data-anim].in{
+  opacity:1;
+  transform:none;
+  filter:none;
+  clip-path:none;
+}
+
+/* Stagger delays */
+[data-delay="1"]{transition-delay:.12s}
+[data-delay="2"]{transition-delay:.24s}
+[data-delay="3"]{transition-delay:.36s}
+[data-delay="4"]{transition-delay:.52s}
+[data-delay="5"]{transition-delay:.68s}
+
+/* Slower duration variants */
+[data-speed="slow"]{transition-duration:1.2s}
+[data-speed="xslow"]{transition-duration:1.6s}
+
+/* ── PAGE ── */
+.page{max-width:760px;margin:0 auto;padding:0 24px}
+
+/* ── ORNAMENT ── */
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:36px auto;color:var(--gold)}
+.orn-line{flex:1;max-width:180px;height:1px;background:linear-gradient(to right,transparent,var(--gold-light),transparent)}
+.orn-ctr{font-size:20px;letter-spacing:3px;color:var(--gold);line-height:1}
+.orn svg{width:26px;height:26px;fill:var(--gold);opacity:.8}
+.orn-sm{margin:24px auto}.orn-sm .orn-line{max-width:70px}.orn-sm .orn-ctr{font-size:14px}
+
+/* ── SECTION ── */
+section{padding:72px 0;text-align:center;position:relative}
+section+section{border-top:1px solid var(--gold-pale)}
+.sec-title{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:36px}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:90px;padding-bottom:70px}
+.bismillah{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--mid);margin-bottom:4px}
+.bismillah-sub{font-size:.85rem;color:var(--light);letter-spacing:2px;text-transform:uppercase;margin-bottom:44px;font-weight:300}
+.host-line{font-size:1rem;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.host-body{font-size:.95rem;color:var(--mid);font-style:italic;margin-bottom:24px;line-height:1.6}
+.bride-name,.groom-name{font-family:'Great Vibes',cursive;font-size:clamp(60px,10vw,92px);color:var(--dark);line-height:1.1;letter-spacing:2px;display:block;margin:8px 0}
+.parentage{font-size:.9rem;color:var(--mid);line-height:1.8;font-style:italic}
+.weds-word{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:8px;text-transform:uppercase;color:var(--gold);margin:16px 0;display:block}
+
+/* HERO CORNERS */
+.hcorner{position:absolute;width:56px;height:56px;opacity:.28}
+.hcorner svg{width:100%;height:100%;fill:none;stroke:var(--gold);stroke-width:.8}
+.hcorner.tl{top:32px;left:32px}.hcorner.tr{top:32px;right:32px;transform:scaleX(-1)}
+.hcorner.bl{bottom:70px;left:32px;transform:scaleY(-1)}.hcorner.br{bottom:70px;right:32px;transform:scale(-1,-1)}
+
+/* SCROLL ARROW */
+.scroll-arrow{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;opacity:.4;transition:opacity .3s}
+.scroll-arrow:hover{opacity:.9}
+.scroll-arrow span{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--mid)}
+.scroll-arrow svg{width:18px;fill:none;stroke:var(--gold);stroke-width:1.5}
+.scroll-arrow{animation:bounce 2.4s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}55%{transform:translateX(-50%) translateY(8px)}}
+
+/* ── COUNTDOWN ── */
+#countdown{background:linear-gradient(to bottom,var(--cream),var(--cream-dark))}
+.cd-sub{font-size:.95rem;font-style:italic;color:var(--light);margin-bottom:32px;letter-spacing:.5px}
+.cd-wrap{display:flex;justify-content:center;gap:clamp(10px,4vw,36px);flex-wrap:wrap}
+.cd-unit{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cd-num{font-family:'Cinzel',serif;font-size:clamp(34px,7vw,60px);font-weight:400;color:var(--dark);line-height:1;min-width:74px;text-align:center;transition:transform .25s ease}
+.cd-num::after{content:'';display:block;width:60%;height:1px;background:var(--gold-pale);margin:6px auto 0}
+.cd-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.cd-sep{font-family:'Cinzel',serif;font-size:38px;color:var(--gold-pale);line-height:1;padding-top:8px;align-self:flex-start}
+.wed-msg{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--gold);animation:pulseG 1.5s ease-in-out infinite;margin-top:20px}
+@keyframes pulseG{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* ── PROGRAMME ── */
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:620px;margin:0 auto}
+.ev-card{background:linear-gradient(145deg,#fff,var(--cream-dark));border:1px solid var(--gold-pale);padding:28px 20px;position:relative;transition:transform .35s cubic-bezier(.22,.8,.32,1),box-shadow .35s}
+.ev-card::before,.ev-card::after{content:'';position:absolute;width:9px;height:9px;border-color:var(--gold-light);border-style:solid}
+.ev-card::before{top:6px;left:6px;border-width:1px 0 0 1px}.ev-card::after{bottom:6px;right:6px;border-width:0 1px 1px 0}
+.ev-card:hover{transform:translateY(-5px) scale(1.01);box-shadow:0 14px 36px rgba(184,151,90,.13)}
+.ev-name{font-family:'Cinzel',serif;font-size:1rem;font-weight:500;letter-spacing:1px;color:var(--dark);margin-bottom:12px}
+.ev-detail{font-size:.88rem;color:var(--mid);line-height:1.9;font-style:italic}
+.ev-date{font-size:.82rem;color:var(--gold);letter-spacing:.5px;font-weight:500;margin-top:9px}
+
+/* ── RECEPTION ── */
+.rec-card{max-width:420px;margin:0 auto;padding:44px 36px;background:linear-gradient(145deg,#fff,var(--cream-dark));border:1px solid var(--gold-pale);position:relative}
+.rec-card::before{content:'';position:absolute;inset:7px;border:1px solid var(--gold-pale);pointer-events:none;opacity:.45}
+.rec-item{margin-bottom:22px}
+.rec-label{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.rec-value{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--dark);line-height:1.6}
+
+/* ── RSVP / WBC shared ── */
+.rsvp-label{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.rsvp-names{list-style:none;display:flex;flex-direction:column;gap:12px}
+.rsvp-names li{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);font-weight:500;letter-spacing:.5px;transition:color .3s,transform .3s}
+.rsvp-names li:hover{color:var(--gold);transform:translateX(4px)}
+
+/* ── GALLERY (local images) ── */
+.gallery-sub{font-size:.95rem;font-style:italic;color:var(--light);margin-bottom:36px;letter-spacing:.5px}
+.g-hero{position:relative;width:100%;max-width:620px;margin:0 auto 18px;overflow:hidden;border:1px solid var(--gold-pale)}
+.g-hero img{width:100%;height:460px;object-fit:cover;object-position:center 20%;display:block;transition:transform .9s cubic-bezier(.22,.8,.32,1);filter:sepia(5%) contrast(1.06)}
+.g-hero:hover img{transform:scale(1.05)}
+.g-hero-cap{position:absolute;bottom:0;left:0;right:0;padding:44px 22px 18px;background:linear-gradient(to top,rgba(0,0,0,.52),transparent);text-align:left}
+.g-hero-cap span{font-family:'Great Vibes',cursive;font-size:2.2rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.g-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px;margin:0 auto 12px}
+.g-item{position:relative;overflow:hidden;border:1px solid var(--gold-pale);cursor:pointer}
+.g-item img{width:100%;height:255px;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.22,.8,.32,1);filter:sepia(5%) contrast(1.06)}
+.g-item:hover img{transform:scale(1.07)}
+.g-trio{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;max-width:620px;margin:0 auto;align-items:center}
+.g-trio .g-item img{height:198px}
+.g-trio .g-item.tall img{height:274px}
+.g-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:flex-end;padding:14px;transition:background .45s}
+.g-overlay span{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:transparent;transition:color .45s,transform .45s;transform:translateY(6px)}
+.g-item:hover .g-overlay{background:rgba(0,0,0,.22)}
+.g-item:hover .g-overlay span{color:rgba(255,255,255,.88);transform:translateY(0)}
+
+/* ── LIGHTBOX ── */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9000;align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;object-fit:contain;border:1px solid rgba(255,255,255,.1)}
+.lb-close{position:absolute;top:20px;right:24px;font-size:2rem;color:#fff;cursor:pointer;opacity:.7;transition:opacity .2s;font-family:sans-serif;line-height:1}
+.lb-close:hover{opacity:1}
+
+/* ── MAP ── */
+.venue-wrap{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.venue-card{display:flex;align-items:flex-start;gap:12px;background:linear-gradient(145deg,#fff,var(--cream-dark));border:1px solid var(--gold-pale);padding:18px 22px;flex:1;min-width:200px;max-width:280px;text-align:left;transition:transform .3s}
+.venue-card:hover{transform:translateY(-3px)}
+.v-icon{color:var(--gold);width:26px;flex-shrink:0;margin-top:2px}
+.v-icon svg{width:26px;height:26px}
+.v-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.v-value{font-size:.9rem;color:var(--dark);line-height:1.7}
+.map-wrap{max-width:620px;margin:0 auto}
+.map-frame{position:relative;width:100%;height:360px;border:1px solid var(--gold-pale);overflow:hidden}
+.map-frame iframe{position:absolute;inset:0;width:100%;height:100%}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.map-pulse{width:38px;height:38px;border-radius:50%;background:rgba(184,151,90,.3);animation:mapPulse 2s ease-out infinite;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.map-dot{width:11px;height:11px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);position:relative;z-index:1}
+@keyframes mapPulse{0%{transform:translate(-50%,-50%) scale(.5);opacity:1}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+.dir-btn{display:inline-flex;align-items:center;gap:7px;margin-top:18px;padding:11px 26px;border:1px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:background .3s,color .3s}
+.dir-btn:hover{background:var(--gold);color:#fff}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:44px 24px 56px;border-top:1px solid var(--gold-pale)}
+.footer-names{font-family:'Great Vibes',cursive;font-size:2.1rem;color:var(--dark);margin-bottom:10px}
+.footer-note{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--light)}
+.footer-brand{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.footer-brand-name{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);font-weight:500}
+.footer-brand-copy{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--light)}
+
+/* ── ANIMATED FLOWER BORDER ── */
+.flower-float{position:fixed;inset:0;pointer-events:none;z-index:100;overflow:hidden}
+.petal-strip{position:fixed;top:0;bottom:0;width:34px;pointer-events:none;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:36px 0;opacity:.2}
+.petal-strip.left{left:4px}.petal-strip.right{right:4px}
+.petal-strip svg{width:22px;height:22px;fill:var(--gold);animation:sway 4s ease-in-out infinite alternate}
+.petal-strip svg:nth-child(2n){animation-delay:-2s}.petal-strip svg:nth-child(3n){animation-delay:-1s}
+@keyframes sway{from{transform:rotate(-12deg) scale(.9)}to{transform:rotate(12deg) scale(1.1)}}
+.fl{position:absolute;opacity:0;animation:floatUp linear infinite;will-change:transform,opacity}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(.7);opacity:0}8%{opacity:.5}85%{opacity:.4}100%{transform:translateY(-100vh) rotate(360deg) scale(1.1);opacity:0}}
+
+@media(max-width:540px){
+  .prog-grid{grid-template-columns:1fr;gap:20px}
+  .g-strip{grid-template-columns:1fr}
+  .g-trio{grid-template-columns:1fr 1fr}
+  .g-trio .g-item.tall img{height:200px}
+  .g-hero img{height:320px}
+  .hcorner{width:34px;height:34px}
+  .petal-strip{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- PETAL STRIPS -->
+<div class="petal-strip left" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(60,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(120,12,12)"/><circle cx="12" cy="12" r="2.2"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(90,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(180,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(270,12,12)"/><circle cx="12" cy="12" r="2"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 3l1.4 5.8 6 .1-4.8 3.6 1.8 5.7L12 15l-4.4 3.2 1.8-5.7L4.6 8.9l6-.1z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(60,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(120,12,12)"/><circle cx="12" cy="12" r="2.2"/></svg>
+</div>
+<div class="petal-strip right" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(60,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(120,12,12)"/><circle cx="12" cy="12" r="2.2"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(90,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(180,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(270,12,12)"/><circle cx="12" cy="12" r="2"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 3l1.4 5.8 6 .1-4.8 3.6 1.8 5.7L12 15l-4.4 3.2 1.8-5.7L4.6 8.9l6-.1z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(60,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(120,12,12)"/><circle cx="12" cy="12" r="2.2"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z"/><circle cx="12" cy="12" r="1.8"/></svg>
+  <svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.4" ry="5"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(90,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(180,12,12)"/><ellipse cx="12" cy="7" rx="2.4" ry="5" transform="rotate(270,12,12)"/><circle cx="12" cy="12" r="2"/></svg>
+</div>
+<div class="flower-float" id="flowers" aria-hidden="true"></div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="this.classList.remove('open')">
+  <span class="lb-close">&times;</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hcorner tl"><svg viewBox="0 0 60 60"><path d="M2 58V2h56"/><path d="M11 58V11h49"/></svg></div>
+  <div class="hcorner tr"><svg viewBox="0 0 60 60"><path d="M2 58V2h56"/><path d="M11 58V11h49"/></svg></div>
+  <div class="hcorner bl"><svg viewBox="0 0 60 60"><path d="M2 58V2h56"/><path d="M11 58V11h49"/></svg></div>
+  <div class="hcorner br"><svg viewBox="0 0 60 60"><path d="M2 58V2h56"/><path d="M11 58V11h49"/></svg></div>
+
+  <div class="page" style="position:relative;z-index:1">
+    <div data-anim="scale-up" data-speed="slow">
+      <p class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <p class="bismillah-sub">In the name of Allah, The Most Beneficent &amp; Merciful</p>
+    </div>
+
+    <div class="orn" data-anim="fade-up" data-delay="1" data-speed="slow">
+      <div class="orn-line"></div>
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.6h8l-6.4 5.2 2.4 7.6L12 17.2l-6.4 5.2 2.4-7.6L1.6 9.6h8z"/></svg>
+      <div class="orn-line"></div>
+    </div>
+
+    <div data-anim="fade-up" data-delay="2">
+      <p class="host-line">Mr. Lt. Taskil Ahmed &amp; Mrs. Shakeela Bano</p>
+      <p class="host-body">request the pleasure of your company<br>on the auspicious occasion of the</p>
+      <p style="font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin:14px 0 7px">"Marriage Ceremony"</p>
+      <p style="font-size:.88rem;color:var(--mid);font-style:italic;letter-spacing:1px;margin-bottom:22px">of their daughter</p>
+    </div>
+
+    <div data-anim="reveal-word" data-delay="3" data-speed="slow">
+      <span class="bride-name">Khushi Bano</span>
+      <p class="parentage">D/o Late Taskil Ahmed &amp; Shakeela Bano<br>Ward No. 1, Loco Colony, Manendragarh</p>
+    </div>
+
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="4">
+      <div class="orn-line"></div>
+      <span class="weds-word">weds</span>
+      <div class="orn-line"></div>
+    </div>
+
+    <div data-anim="reveal-word" data-delay="5" data-speed="slow">
+      <span class="groom-name">Mohsin Khan</span>
+      <p class="parentage">S/o Janab Habib Khan &amp; Salma Begum<br>Haldibadi, Chirimiri</p>
+    </div>
+  </div>
+
+  <div class="scroll-arrow" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
+    <span>scroll</span>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- ===== COUNTDOWN ===== -->
+<section id="countdown">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">The Big Day</p>
+    <p class="cd-sub" data-anim="fade-up" data-delay="1">Counting down to the celebration</p>
+    <div class="cd-wrap" data-anim="scale-up" data-delay="2" id="cd">
+      <div class="cd-unit"><div class="cd-num" id="days">00</div><div class="cd-label">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="hours">00</div><div class="cd-label">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="minutes">00</div><div class="cd-label">Minutes</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="seconds">00</div><div class="cd-label">Seconds</div></div>
+    </div>
+    <div id="wed-msg" class="wed-msg" style="display:none">Today is the Day!</div>
+  </div>
+</section>
+
+<!-- ===== PROGRAMME ===== -->
+<section id="programme">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">Programme</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <div class="prog-grid">
+      <div class="ev-card" data-anim="fade-up" data-delay="1">
+        <p class="ev-name">Milad Sharif</p>
+        <p class="ev-detail">After Namaz-e-Maghrib</p>
+        <p class="ev-date">Thursday, 09 April 2026<br>At 6:00 PM</p>
+      </div>
+      <div class="ev-card" data-anim="fade-up" data-delay="2">
+        <p class="ev-name">Haldi &amp; Mehendi</p>
+        <p class="ev-detail">After Namaz-e-Zohar</p>
+        <p class="ev-date">Friday, 10 April 2026<br>At 4:00 PM</p>
+      </div>
+      <div class="ev-card" data-anim="fade-up" data-delay="3">
+        <p class="ev-name">Barat Aamad</p>
+        <p class="ev-detail">After Namaz-e-Maghrib</p>
+        <p class="ev-date">Saturday, 11 April 2026</p>
+      </div>
+      <div class="ev-card" data-anim="fade-up" data-delay="4">
+        <p class="ev-name">Nikah</p>
+        <p class="ev-detail">After Namaz-e-Isha</p>
+        <p class="ev-date">Saturday, 11 April 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RECEPTION ===== -->
+<section id="reception">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">Reception &amp; Dinner</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <div class="rec-card" data-anim="scale-up" data-delay="2" data-speed="slow">
+      <div class="rec-item"><p class="rec-label">Date</p><p class="rec-value">Saturday, 11 April 2026</p></div>
+      <div style="width:36px;height:1px;background:var(--gold-pale);margin:0 auto 20px"></div>
+      <div class="rec-item"><p class="rec-label">Time</p><p class="rec-value">8:00 PM onwards</p></div>
+      <div style="width:36px;height:1px;background:var(--gold-pale);margin:0 auto 20px"></div>
+      <div class="rec-item" style="margin-bottom:0"><p class="rec-label">Venue</p><p class="rec-value">Ward No. 01, Loco Colony<br>Manendragarh</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RSVP ===== -->
+<section id="rsvp">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">R.S.V.P.</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <p class="rsvp-label" data-anim="fade-up" data-delay="1">Kindly confirm your presence with</p>
+    <ul class="rsvp-names" data-anim="fade-up" data-delay="2">
+      <li>Md. Akil</li><li>Md. Sakil</li><li>Md. Shahid</li><li>Yusuf</li><li>Sameer Ali</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== WBCF ===== -->
+<section id="wbc">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">W.B.C.F.</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <p class="rsvp-label" data-anim="fade-up" data-delay="1">With Best Compliments From</p>
+    <ul class="rsvp-names" data-anim="fade-up" data-delay="2">
+      <li>Md. Wakil</li><li>Sakeela Bano</li><li>Taukil Ahmed</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="gallery">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">A Glimpse of Love</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <p class="gallery-sub" data-anim="fade-up" data-delay="1">Moments captured under a sky full of stars</p>
+
+    <!-- HERO PHOTO -->
+    <div class="g-hero" data-anim="scale-in" data-delay="2" data-speed="slow" onclick="openLb('DSC01492.JPG')">
+      <img src="DSC01492.JPG" alt="Khushi and Mohsin" loading="lazy"
+           onerror="this.parentElement.style.display='none'">
+      <div class="g-hero-cap"><span>Khushi &amp; Mohsin</span></div>
+    </div>
+
+    <!-- 2-COLUMN STRIP -->
+    <div class="g-strip">
+      <div class="g-item" data-anim="fade-right" data-delay="1" onclick="openLb('DSC01436.JPG')">
+        <img src="DSC01436.JPG" alt="Together" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Together</span></div>
+      </div>
+      <div class="g-item" data-anim="fade-left" data-delay="2" onclick="openLb('DSC01449.JPG')">
+        <img src="DSC01449.JPG" alt="Embrace" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Embrace</span></div>
+      </div>
+    </div>
+
+    <!-- 3-COLUMN TRIO -->
+    <div class="g-trio">
+      <div class="g-item" data-anim="fade-up" data-delay="1" onclick="openLb('DSC01482.JPG')">
+        <img src="DSC01482.JPG" alt="Joy" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Joy</span></div>
+      </div>
+      <div class="g-item tall" data-anim="fade-up" data-delay="2" onclick="openLb('DSC01484.JPG')">
+        <img src="DSC01484.JPG" alt="Forever" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Forever</span></div>
+      </div>
+      <div class="g-item" data-anim="fade-up" data-delay="3" onclick="openLb('DSC01495.JPG')">
+        <img src="DSC01495.JPG" alt="Lights" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Glows</span></div>
+      </div>
+      <div class="g-item" data-anim="fade-up" data-delay="3" onclick="openLb('DSC01474.JPG')">
+        <img src="DSC01474.JPG" alt="Lights" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>In</span></div>
+      </div>
+      <div class="g-item" data-anim="fade-up" data-delay="3" onclick="openLb('DSC01481.JPG')">
+        <img src="DSC01481.JPG" alt="Lights" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>This</span></div>
+      </div>
+      <div class="g-item" data-anim="fade-up" data-delay="3" onclick="openLb('DSC01492.JPG')">
+        <img src="DSC01492.JPG" alt="Lights" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="g-overlay"><span>Moment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section id="venue">
+  <div class="page">
+    <p class="sec-title" data-anim="fade-up">Find Us</p>
+    <div class="orn orn-sm" data-anim="fade-up" data-delay="1"><div class="orn-line"></div><span class="orn-ctr">✦</span><div class="orn-line"></div></div>
+    <p class="gallery-sub" data-anim="fade-up" data-delay="1">We look forward to welcoming you</p>
+    <div class="venue-wrap" data-anim="fade-up" data-delay="2">
+      <div class="venue-card">
+        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div><p class="v-label">Venue</p><p class="v-value">Ward No. 01, Loco Colony<br>Manendragarh, C.G.</p></div>
+      </div>
+      <div class="venue-card">
+        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><p class="v-label">Reception</p><p class="v-value">Saturday, 11 April 2026<br>8:00 PM onwards</p></div>
+      </div>
+    </div>
+    <div class="map-wrap" data-anim="scale-up" data-delay="3">
+      <div class="map-frame">
+        <iframe src="https://maps.google.com/maps?q=Manendragarh+Chhattisgarh+India&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;filter:grayscale(15%) contrast(1.05)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-pin"><div class="map-pulse"></div><div class="map-dot"></div></div>
+      </div>
+      <a class="dir-btn" href="https://maps.google.com/?q=Manendragarh+Chhattisgarh" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Get Directions
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer data-anim="fade-up">
+  <div class="orn">
+    <div class="orn-line"></div>
+    <svg style="width:26px;height:26px;fill:var(--gold);opacity:.7" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6h8l-6.4 5.2 2.4 7.6L12 17.2l-6.4 5.2 2.4-7.6L1.6 9.6h8z"/></svg>
+    <div class="orn-line"></div>
+  </div>
+  <p class="footer-names">Khushi &amp; Mohsin</p>
+  <p class="footer-note">11 · IV · MMXXVI</p>
+  <div class="footer-brand">
+    <span class="footer-brand-name">zivsxdev</span>
+    <span class="footer-brand-copy">© 2026 · All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL ANIMATION ENGINE ──
+const animEls = document.querySelectorAll('[data-anim]');
+const animObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      animObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+animEls.forEach(el => animObs.observe(el));
+
+// Trigger hero immediately on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero [data-anim]').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), i * 180 + 100);
+  });
+});
+
+// ── COUNTDOWN ──
+function tick() {
+  const diff = new Date('2026-04-11T20:00:00') - new Date();
+  if (diff <= 0) {
+    document.getElementById('cd').style.display = 'none';
+    document.getElementById('wed-msg').style.display = 'block';
+    return;
+  }
+  const p = n => String(n).padStart(2, '0');
+  const set = (id, v) => {
+    const el = document.getElementById(id), nv = p(v);
+    if (el.textContent !== nv) {
+      el.style.transform = 'scale(1.18) translateY(-3px)';
+      el.textContent = nv;
+      setTimeout(() => el.style.transform = 'scale(1) translateY(0)', 220);
+    }
+  };
+  set('days',    Math.floor(diff / 86400000));
+  set('hours',   Math.floor(diff % 86400000 / 3600000));
+  set('minutes', Math.floor(diff % 3600000 / 60000));
+  set('seconds', Math.floor(diff % 60000 / 1000));
+}
+tick(); setInterval(tick, 1000);
+
+// ── LIGHTBOX ──
+function openLb(src) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').classList.add('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('lb').classList.remove('open');
+});
+
+// ── FLOATING FLOWERS ──
+const fc = document.getElementById('flowers');
+const fp = [
+  `<svg viewBox="0 0 24 24"><path d="M12 2C10 6 6 8 6 12s3 7 6 10c3-3 6-6 6-10S14 6 12 2z" fill="#b8975a" opacity=".65"/><circle cx="12" cy="12" r="2" fill="#e8d9b5"/></svg>`,
+  `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2.3" ry="5" fill="#b8975a" opacity=".6"/><ellipse cx="12" cy="7" rx="2.3" ry="5" transform="rotate(60,12,12)" fill="#c4a870" opacity=".6"/><ellipse cx="12" cy="7" rx="2.3" ry="5" transform="rotate(120,12,12)" fill="#b8975a" opacity=".6"/><ellipse cx="12" cy="7" rx="2.3" ry="5" transform="rotate(180,12,12)" fill="#c4a870" opacity=".6"/><ellipse cx="12" cy="7" rx="2.3" ry="5" transform="rotate(240,12,12)" fill="#b8975a" opacity=".6"/><ellipse cx="12" cy="7" rx="2.3" ry="5" transform="rotate(300,12,12)" fill="#c4a870" opacity=".6"/><circle cx="12" cy="12" r="2.5" fill="#e8d9b5"/></svg>`,
+  `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="7" rx="2" ry="4.5" fill="#b8975a" opacity=".6"/><ellipse cx="12" cy="7" rx="2" ry="4.5" transform="rotate(90,12,12)" fill="#c4a870" opacity=".6"/><ellipse cx="12" cy="7" rx="2" ry="4.5" transform="rotate(180,12,12)" fill="#b8975a" opacity=".6"/><ellipse cx="12" cy="7" rx="2" ry="4.5" transform="rotate(270,12,12)" fill="#c4a870" opacity=".6"/><circle cx="12" cy="12" r="2" fill="#e8d9b5"/></svg>`,
+  `<svg viewBox="0 0 24 24"><path d="M12 3l1.4 5.8 6 .1-4.8 3.6 1.8 5.7L12 15l-4.4 3.2 1.8-5.7L4.6 8.9l6-.1z" fill="#b8975a" opacity=".55"/></svg>`
+];
+function spawn() {
+  const d = document.createElement('div');
+  d.className = 'fl';
+  const sz = 13 + Math.random() * 16;
+  const dur = 10 + Math.random() * 12;
+  const del = Math.random() * 4;
+  d.style.cssText = `left:${Math.random()*100}vw;bottom:-40px;width:${sz}px;height:${sz}px;animation-duration:${dur}s;animation-delay:${del}s`;
+  d.innerHTML = fp[Math.floor(Math.random() * fp.length)];
+  fc.appendChild(d);
+  setTimeout(() => d.remove(), (dur + del) * 1000);
+}
+for (let i = 0; i < 8; i++) setTimeout(spawn, i * 700);
+setInterval(spawn, 1500);
+</script>
+</body>
+</html>
